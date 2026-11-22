@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Montar el portfolio · Proyecto Intermodular</title>
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../">
+      <img src="../assets/logo.png" alt="Centre San Antonio de Padua" height="32">
+      <span><b>Proyecto Intermodular</b><small>Portfolio paso a paso</small></span>
+    </a>
+  </header>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="tag">Primero</span>
+    <h1>Montar el portfolio</h1>
+    <p class="lead">Copia los archivos, publica la web y guarda la dirección. Solo se hace una vez.</p>
+    <div class="meta">
+      <span><b>Necesitas:</b> una cuenta de Google</span>
+      <span><b>Al terminar tienes:</b> la dirección <code>/exec</code> de tu portfolio</span>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <nav class="toc" aria-label="Pasos">
+    <div class="progress"><span></span></div>
+    <p class="progress-text"></p>
+    <ol>
+      <li><a href="#hoja">1 · Hoja nueva</a></li>
+      <li><a href="#codigo">2 · Código.gs</a></li>
+      <li><a href="#index">3 · index.html</a></li>
+      <li><a href="#portada">4 · slide_01.html</a></li>
+      <li><a href="#config">5 · Pestaña «Config»</a></li>
+      <li><a href="#publicar">6 · Implementar</a></li>
+      <li><a href="#comprobar">7 · Comprobaciones</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="step" id="hoja">
+      <h2><span class="num">1</span> Hoja nueva</h2>
+      <p>Crea una hoja en <a href="https://sheets.new" target="_blank" rel="noopener">sheets.new</a> y llámala <code>Portfolio PI · Apellidos Nombre</code>.</p>
+      <div class="box info">Usa la misma cuenta de Google que en las prácticas de Apps Script de GPD.</div>
+      <label class="check"><input type="checkbox" data-step="hoja"> Hecho</label>
+    </section>
+
+    <section class="step" id="codigo">
+      <h2><span class="num">2</span> Código.gs</h2>
+      <p><b>Extensiones → Apps Script</b>. Sustituye todo el contenido de <code>Código.gs</code> por:</p>
+      <figure data-archivo="../descargas/apps-script/Code.gs" data-nombre="Código.gs"></figure>
+      <p>Guarda, elige la función <code>prepararHoja</code> y pulsa <b>Ejecutar</b>. Acepta los permisos.</p>
+      <p>Recarga la hoja: aparecen las pestañas <code>Config</code> y <code>Slides</code> y el menú <b>Portfolio</b>.</p>
+      <label class="check"><input type="checkbox" data-step="codigo"> Hecho</label>
+    </section>
+
+    <section class="step" id="index">
+      <h2><span class="num">3</span> index.html</h2>
+      <p>Archivo HTML nuevo llamado <code>index</code>:</p>
+      <figure data-archivo="../descargas/apps-script/plantilla-index.html" data-nombre="index.html"></figure>
+      <label class="check"><input type="checkbox" data-step="index"> Hecho</label>
+    </section>
+
+    <section class="step" id="portada">
+      <h2><span class="num">4</span> slide_01.html</h2>
+      <p>Archivo HTML nuevo llamado <code>slide_01</code>. Es tu portada:</p>
+      <figure data-archivo="../descargas/slides/slide_01.html"></figure>
+      <label class="check"><input type="checkbox" data-step="portada"> Hecho</label>
+    </section>
+
+    <section class="step" id="config">
+      <h2><span class="num">5</span> Pestaña «Config»</h2>
+      <p>En la columna B escribe el nombre de tu microempresa (<code>titulo</code>) y el tuyo (<code>autores</code>). Elige el <code>tema</code>.</p>
+      <label class="check"><input type="checkbox" data-step="config"> Hecho</label>
+    </section>
+
+    <section class="step" id="publicar">
+      <h2><span class="num">6</span> Implementar</h2>
+      <p><b>Implementar → Nueva implementación → Aplicación web</b> · Ejecutar como: <b>Yo</b> · Acceso: <b>Cualquier usuario con una cuenta de Google</b>. Copia la URL <code>/exec</code> y guárdala.</p>
+      <div class="box warn">Esto se hace una sola vez. Cuando cambies o añadas un archivo: <b>Gestionar implementaciones → lápiz → Nueva versión</b>. Si cambias algo en la hoja, basta con recargar la web.</div>
+      <label class="check"><input type="checkbox" data-step="publicar"> Hecho</label>
+    </section>
+
+    <section class="step" id="comprobar">
+      <h2><span class="num">7</span> Comprobaciones</h2>
+      <table class="plain">
+        <tr><th>Acción</th><th>Resultado esperado</th></tr>
+        <tr><td><b>Portfolio → Revisar las páginas</b></td><td><code>slide_01: correcto</code></td></tr>
+        <tr><td>Abrir la URL <code>/exec</code></td><td>Tu portada, con tu nombre.</td></tr>
+        <tr><td>Cambiar el tema en <code>Config</code> y recargar</td><td>La portada cambia de aspecto.</td></tr>
+      </table>
+      <label class="check"><input type="checkbox" data-step="comprobar"> Hecho</label>
+    </section>
+
+  </main>
+</div>
+  <footer class="foot">2 GES · Centre San Antonio de Padua · Empresas imaginadas para uso en el aula</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

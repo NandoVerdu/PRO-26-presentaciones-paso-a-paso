@@ -3,35 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Proyecto Intermodular, paso a paso</title>
-  <meta name="description" content="Guía para montar el portfolio del Proyecto Intermodular con Google Sheets, Apps Script y reveal.js.">
-  <link rel="icon" href="assets/icono.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Cousine:ital,wght@0,400;0,700;1,400&display=swap">
-  <link rel="stylesheet" href="assets/estilo.css">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfolio paso a paso · Proyecto Intermodular</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <a class="saltar" href="#hoja">Ir al contenido</a>
-
-  <header class="lomo">
-    <a class="etiqueta" href="#/empieza/portada">
-      <strong>Proyecto Intermodular</strong>
-      <span>2 GES</span>
-      <span>2026-2027</span>
+  <header class="top">
+    <a class="brand" href="./">
+      <img src="assets/logo.png" alt="Centre San Antonio de Padua" height="32">
+      <span><b>Proyecto Intermodular</b><small>Portfolio paso a paso</small></span>
     </a>
-    <span class="anilla" aria-hidden="true"></span>
   </header>
-
-  <div class="archivador">
-    <main class="hoja" id="hoja" tabindex="-1">
-      <p>Abriendo la guía…</p>
-    </main>
-    <nav class="separadores" id="separadores" aria-label="Apartados de la guía"></nav>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="tag">2 GES · Proyecto Intermodular</span>
+    <h1>Tu portfolio con Google Sheets y reveal.js</h1>
+    <p class="lead">Una presentación web que crece con cada actividad. Móntala una vez y añade páginas durante el curso.</p>
   </div>
+</section>
 
-  <noscript><p class="ojo">Esta guía necesita JavaScript.</p></noscript>
-  <script src="assets/app.js"></script>
+<div class="cards">
+  <a class="card" href="montar/">
+    <span class="tag">Primero</span>
+    <h2>Montar el portfolio</h2>
+    <p>La hoja, el código y la dirección de tu web.</p>
+    <span class="go">Empezar →</span>
+  </a>
+  <a class="card" href="ficha/">
+    <span class="tag exam">Actividad 1</span>
+    <h2>Ficha de empresa</h2>
+    <p>Una vista con los datos básicos de tu microempresa.</p>
+    <span class="go">Hacer la ficha →</span>
+  </a>
+  <a class="card" href="organigrama/">
+    <span class="tag exam">Actividad 2</span>
+    <h2>Organigrama</h2>
+    <p>Una vista con los puestos y las funciones de cada uno.</p>
+    <span class="go">Hacer el organigrama →</span>
+  </a>
+  <a class="card" href="slide/">
+    <span class="tag">Cuando lo necesites</span>
+    <h2>Añadir un slide</h2>
+    <p>Una página sencilla con código reveal.js.</p>
+    <span class="go">Ver cómo →</span>
+  </a>
+</div>
+  <footer class="foot">2 GES · Centre San Antonio de Padua · Empresas imaginadas para uso en el aula</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
 </body>
 </html>

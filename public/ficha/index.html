@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ficha de empresa · Proyecto Intermodular</title>
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../">
+      <img src="../assets/logo.png" alt="Centre San Antonio de Padua" height="32">
+      <span><b>Proyecto Intermodular</b><small>Portfolio paso a paso</small></span>
+    </a>
+  </header>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="tag">Actividad 1</span>
+    <h1>Ficha de empresa</h1>
+    <p class="lead">Presenta los datos básicos de tu microempresa en una vista que se pueda pulsar.</p>
+    <div class="meta">
+      <span><b>Individual</b></span>
+      <span><b>En tu portfolio:</b> <code>viz_ficha_empresa</code></span>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <nav class="toc" aria-label="Pasos">
+    <div class="progress"><span></span></div>
+    <p class="progress-text"></p>
+    <ol>
+      <li><a href="#ejemplo">Ejemplo</a></li>
+      <li><a href="#contenido">1 · Los datos</a></li>
+      <li><a href="#estilo">2 · El estilo</a></li>
+      <li><a href="#generar">3 · Generar la vista</a></li>
+      <li><a href="#anadir">4 · Añadirla al portfolio</a></li>
+      <li><a href="#comprobar">5 · Comprobaciones</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="step" id="ejemplo">
+      <h2>Ejemplo</h2>
+      <p>Pulsa cada dato. Es una empresa imaginada: la tuya tendrá otros datos y otro aspecto.</p>
+      <iframe class="demo" sandbox="allow-scripts" title="Ficha de empresa de ejemplo" src="../descargas/vistas/viz_ficha_empresa.html"></iframe>
+    </section>
+
+    <section class="step" id="contenido">
+      <h2><span class="num">1</span> Los datos</h2>
+      <p>Copia esta plantilla en un documento, rellena los corchetes y guárdala como <code>contenido-ficha.md</code>.</p>
+      <figure data-archivo="../descargas/especificaciones/contenido-ficha.md"></figure>
+      <details><summary>Ver un ejemplo rellenado</summary>
+      <figure data-archivo="../descargas/especificaciones/contenido-ficha-ejemplo.md"></figure>
+      </details>
+      <div class="box warn">La dirección y el correo son inventados. No pongas los de tu casa.</div>
+      <label class="check"><input type="checkbox" data-step="contenido"> Hecho</label>
+    </section>
+
+    <section class="step" id="estilo">
+      <h2><span class="num">2</span> El estilo</h2>
+      <p>Guárdalo como <code>estilo.md</code>. Lo usarás en todas las vistas del curso.</p>
+      <figure data-archivo="../descargas/especificaciones/estilo.md"></figure>
+      <details><summary>Ver un ejemplo rellenado</summary>
+      <figure data-archivo="../descargas/especificaciones/estilo-ejemplo.md"></figure>
+      </details>
+      <label class="check"><input type="checkbox" data-step="estilo"> Hecho</label>
+    </section>
+
+    <section class="step" id="generar">
+      <h2><span class="num">3</span> Generar la vista</h2>
+      <p>Adjunta a la IA tus dos archivos, <code>estilo.md</code> y <code>contenido-ficha.md</code>, y envía este texto:</p>
+      <figure data-archivo="../descargas/especificaciones/prompt-vista.md" data-nombre="Texto para la IA"></figure>
+      <p>Comprueba que no ha añadido datos que no son tuyos. Pide los cambios de uno en uno.</p>
+      <label class="check"><input type="checkbox" data-step="generar"> Hecho</label>
+    </section>
+
+    <section class="step" id="anadir">
+      <h2><span class="num">4</span> Añadirla al portfolio</h2>
+      <p>En Apps Script, archivo HTML nuevo llamado <code>viz_ficha_empresa</code>. Pega el código y guarda. Después, en la hoja:</p>
+      <figure data-fila="viz_ficha_empresa|vista|2|Ficha de empresa"></figure>
+      <p><b>Implementar → Gestionar implementaciones → lápiz → Nueva versión → Implementar</b>. La dirección <code>/exec</code> no cambia.</p>
+      <label class="check"><input type="checkbox" data-step="anadir"> Hecho</label>
+    </section>
+
+    <section class="step" id="comprobar">
+      <h2><span class="num">5</span> Comprobaciones</h2>
+      <table class="plain">
+        <tr><th>Acción</th><th>Resultado esperado</th></tr>
+        <tr><td><b>Portfolio → Revisar las páginas</b></td><td><code>viz_ficha_empresa: correcto</code></td></tr>
+        <tr><td>Abrir <code>/exec</code> y pasar a la segunda página</td><td>Tu ficha, entera y sin cortes.</td></tr>
+        <tr><td>Pulsar cada dato</td><td>Sale su explicación.</td></tr>
+      </table>
+      <label class="check"><input type="checkbox" data-step="comprobar"> Hecho</label>
+    </section>
+
+  </main>
+</div>
+  <footer class="foot">2 GES · Centre San Antonio de Padua · Empresas imaginadas para uso en el aula</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

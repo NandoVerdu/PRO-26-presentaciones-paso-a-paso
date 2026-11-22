@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Organigrama · Proyecto Intermodular</title>
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../">
+      <img src="../assets/logo.png" alt="Centre San Antonio de Padua" height="32">
+      <span><b>Proyecto Intermodular</b><small>Portfolio paso a paso</small></span>
+    </a>
+  </header>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="tag">Actividad 2</span>
+    <h1>Organigrama</h1>
+    <p class="lead">Enseña los puestos de tu empresa. Al pulsar cada uno, salen sus funciones.</p>
+    <div class="meta">
+      <span><b>Individual</b></span>
+      <span><b>En tu portfolio:</b> <code>viz_organigrama</code></span>
+      <span><b>Antes:</b> la <a href="../ficha/">ficha de empresa</a></span>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <nav class="toc" aria-label="Pasos">
+    <div class="progress"><span></span></div>
+    <p class="progress-text"></p>
+    <ol>
+      <li><a href="#ejemplo">Ejemplo</a></li>
+      <li><a href="#contenido">1 · Puestos y funciones</a></li>
+      <li><a href="#generar">2 · Generar la vista</a></li>
+      <li><a href="#anadir">3 · Añadirla al portfolio</a></li>
+      <li><a href="#comprobar">4 · Comprobaciones</a></li>
+      <li><a href="#entrega">Entrega</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="step" id="ejemplo">
+      <h2>Ejemplo</h2>
+      <p>Pulsa cada puesto y mira qué camino se ilumina.</p>
+      <iframe class="demo" sandbox="allow-scripts" title="Organigrama de ejemplo" src="../descargas/vistas/viz_organigrama.html"></iframe>
+    </section>
+
+    <section class="step" id="contenido">
+      <h2><span class="num">1</span> Puestos y funciones</h2>
+      <p>Rellena la plantilla y guárdala como <code>contenido-organigrama.md</code>. Cada función empieza por un verbo.</p>
+      <figure data-archivo="../descargas/especificaciones/contenido-organigrama.md"></figure>
+      <details><summary>Ver un ejemplo rellenado</summary>
+      <figure data-archivo="../descargas/especificaciones/contenido-organigrama-ejemplo.md"></figure>
+      </details>
+      <table class="plain">
+        <tr><th>Función mal escrita</th><th>Función bien escrita</th></tr>
+        <tr><td>Se encarga del papeleo.</td><td>Hace las facturas y registra los cobros.</td></tr>
+        <tr><td>Da un buen trato.</td><td>Contesta los mensajes y da cita.</td></tr>
+      </table>
+      <label class="check"><input type="checkbox" data-step="contenido"> Hecho</label>
+    </section>
+
+    <section class="step" id="generar">
+      <h2><span class="num">2</span> Generar la vista</h2>
+      <p>Adjunta a la IA el mismo <code>estilo.md</code> de la ficha y <code>contenido-organigrama.md</code>, y envía este texto:</p>
+      <figure data-archivo="../descargas/especificaciones/prompt-vista.md" data-nombre="Texto para la IA"></figure>
+      <p>Comprueba que no ha añadido datos que no son tuyos. Pide los cambios de uno en uno.</p>
+      <label class="check"><input type="checkbox" data-step="generar"> Hecho</label>
+    </section>
+
+    <section class="step" id="anadir">
+      <h2><span class="num">3</span> Añadirla al portfolio</h2>
+      <p>En Apps Script, archivo HTML nuevo llamado <code>viz_organigrama</code>. Pega el código y guarda. Después, en la hoja:</p>
+      <figure data-fila="viz_organigrama|vista|3|Organigrama"></figure>
+      <p><b>Implementar → Gestionar implementaciones → lápiz → Nueva versión → Implementar</b>. La dirección <code>/exec</code> no cambia.</p>
+      <label class="check"><input type="checkbox" data-step="anadir"> Hecho</label>
+    </section>
+
+    <section class="step" id="comprobar">
+      <h2><span class="num">4</span> Comprobaciones</h2>
+      <table class="plain">
+        <tr><th>Acción</th><th>Resultado esperado</th></tr>
+        <tr><td><b>Portfolio → Revisar las páginas</b></td><td><code>viz_organigrama: correcto</code></td></tr>
+        <tr><td>Pulsar cada puesto en <code>/exec</code></td><td>Salen sus funciones y de quién depende.</td></tr>
+        <tr><td>Sumar las personas</td><td>El mismo número que en la ficha.</td></tr>
+        <tr><td>Comparar con la ficha</td><td>Los mismos colores y la misma letra.</td></tr>
+      </table>
+      <label class="check"><input type="checkbox" data-step="comprobar"> Hecho</label>
+    </section>
+
+    <section class="step deliver" id="entrega">
+      <h2>Entrega</h2>
+      <p>Entrega en <a href="https://portal-aula.vercel.app" target="_blank" rel="noopener">el portal</a> la dirección <code>/exec</code>, con la ficha y el organigrama. Ábrela antes en otro ordenador.</p>
+    </section>
+
+  </main>
+</div>
+  <footer class="foot">2 GES · Centre San Antonio de Padua · Empresas imaginadas para uso en el aula</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

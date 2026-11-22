@@ -1,36 +1,24 @@
-# Proyecto Intermodular, paso a paso
+# Proyecto Intermodular · Portfolio paso a paso
 
-Guía web para que el alumnado de 2 GES monte su portfolio con Google Sheets, Apps Script y reveal.js, y lo vaya llenando con cada actividad.
+Guía para que el alumnado de 2 GES monte su portfolio con Google Sheets, Apps Script y reveal.js. Web estática, sin compilación: lo que hay en `public/` es lo que se publica en Vercel.
 
-Es una web estática: no tiene base de datos, inicio de sesión ni paso de compilación. Lo que hay en `public/` es lo que se publica.
-
-## Qué hay en cada carpeta
-
-| Carpeta o archivo | Contenido |
+| Carpeta | Contenido |
 |---|---|
-| `public/contenido/indice.json` | Los separadores y las páginas, en orden |
-| `public/contenido/…` | El texto de cada página |
-| `public/descargas/apps-script` | `Code.gs` y la plantilla `index` que copia el alumnado |
-| `public/descargas/slides` | Slides de ejemplo |
-| `public/descargas/vistas` | Vistas de ejemplo |
-| `public/descargas/especificaciones` | Archivos de estilo, de contenido y textos para la IA |
-| `public/assets` | Aspecto y funcionamiento de la guía |
-| `reserva/` | Ficha completa (cliente, oferta, proceso, números y ODS) para actividades posteriores. No se publica en la web |
-| `plantilla-actividad.html` | Página en blanco para una actividad nueva |
-| `ver-en-local.bat` | Abre la guía en este ordenador |
-| `publicar.bat` | Sube los cambios a GitHub |
+| `public/index.html` | Portada con las tarjetas |
+| `public/montar`, `ficha`, `organigrama`, `slide` | Una página por tarea |
+| `public/descargas` | El código y las plantillas. Las páginas los leen de ahí |
+| `public/assets` | Aspecto y funcionamiento (mismo estilo que la guía de GPD) |
+| `reserva` | Ficha completa para actividades posteriores. No se publica |
 
-El código se escribe una sola vez, en `descargas/`. Las páginas lo leen de ahí.
+## Añadir una actividad
 
-## Abrir una actividad nueva
+1. Copia la carpeta `public/organigrama` con otro nombre y cambia los textos.
+2. Guarda su plantilla de contenido y su vista de ejemplo en `public/descargas`.
+3. Añade su tarjeta en `public/index.html`.
+4. Compruébalo con `ver-en-local.bat` y súbelo con `publicar.bat`.
 
-1. Copia `plantilla-actividad.html` en `public/contenido/actividades/` con otro nombre, por ejemplo `canvas.html`, y escribe el texto.
-2. Si lleva archivo de contenido o vista de ejemplo, guárdalos en `public/descargas/`.
-3. En `public/contenido/indice.json`, busca la actividad y cambia `"estado": "pendiente"` por `"archivo": "actividades/canvas.html"`.
-4. Compruébalo con `ver-en-local.bat` y publica con `publicar.bat`.
+Dentro de una página:
 
-Las actividades con `"estado": "pendiente"` ya salen en la guía, con sus fechas y el aviso de que están cerradas. Las fechas se cambian en `indice.json`.
-
-## Columnas de la pestaña Slides
-
-`archivo | tipo | activo | orden | descripción`, con `tipo` igual a `slide` o `vista`.
+- `<figure data-archivo="../descargas/…"></figure>` enseña un archivo con botón de copiar.
+- `<figure data-fila="archivo|vista|orden|descripción"></figure>` enseña una fila de la pestaña Slides.
+- `<iframe class="demo" …>` enseña una vista de ejemplo.

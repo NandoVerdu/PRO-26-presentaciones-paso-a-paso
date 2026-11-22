@@ -1,26 +1,15 @@
-# Especificación de contenido: organigrama
+# Organigrama
 
-Rellena lo que va entre corchetes. La IA no puede añadir puestos ni funciones.
+Empresa: [ ]
+Total de personas: [el mismo que en la ficha]
 
-- Archivo: viz_organigrama
-- Nombre de la empresa: [el mismo que en la ficha]
-- Número de personas: [el mismo que en la ficha]
+Entre tres y seis puestos. Sin nombres de personas.
 
-## Puestos
+Puesto | Depende de | Personas | Función 1 | Función 2 | Función 3
+Dirección | nadie | [ ] | [ ] | [ ] | [ ]
+[ ] | [ ] | [ ] | [ ] | [ ] | [ ]
+[ ] | [ ] | [ ] | [ ] | [ ] | [ ]
+[ ] | [ ] | [ ] | [ ] | [ ] | [ ]
 
-Entre tres y seis. Escribe el puesto, no el nombre de nadie.
-Las funciones empiezan por un verbo: hace, contesta, revisa, cobra…
-
-| Puesto | Depende de | Personas | Función 1 | Función 2 | Función 3 |
-|---|---|---|---|---|---|
-| Dirección | de nadie | [ ] | [ ] | [ ] | [ ] |
-| [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-
-## Interacción
-
-- Cada puesto es una caja que se puede pulsar
-- Unas líneas unen cada puesto con el puesto del que depende
-- Al pulsar un puesto, se ilumina el camino desde Dirección
-- Al pulsar un puesto, salen sus funciones y de quién depende
+Cada puesto es una caja unida por una línea al puesto del que depende.
+Al pulsar un puesto, se ilumina el camino desde Dirección y salen sus funciones.

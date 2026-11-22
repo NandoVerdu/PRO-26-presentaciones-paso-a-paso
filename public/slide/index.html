@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Añadir un slide · Proyecto Intermodular</title>
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../">
+      <img src="../assets/logo.png" alt="Centre San Antonio de Padua" height="32">
+      <span><b>Proyecto Intermodular</b><small>Portfolio paso a paso</small></span>
+    </a>
+  </header>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="tag">Cuando lo necesites</span>
+    <h1>Añadir un slide</h1>
+    <p class="lead">Para una idea, una lista o una imagen. Si se tiene que pulsar, es una vista.</p>
+    <div class="meta">
+      <span><b>En tu portfolio:</b> <code>slide_02</code>, <code>slide_03</code>…</span>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <nav class="toc" aria-label="Pasos">
+    <div class="progress"><span></span></div>
+    <p class="progress-text"></p>
+    <ol>
+      <li><a href="#codigo">1 · El código</a></li>
+      <li><a href="#fila">2 · La fila</a></li>
+      <li><a href="#publicar">3 · Publicar</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="step" id="codigo">
+      <h2><span class="num">1</span> El código</h2>
+      <p>Archivo HTML nuevo llamado <code>slide_02</code>. Cambia los textos:</p>
+      <figure data-archivo="../descargas/slides/slide_02.html"></figure>
+      <div class="box warn">Si el archivo es <code>slide_03</code>, cambia <code>s02</code> por <code>s03</code> en todo el código.</div>
+      <table class="plain">
+        <tr><th>Para…</th><th>Escribe…</th></tr>
+        <tr><td>Que aparezca al pulsar la flecha</td><td><code>class="fragment"</code></td></tr>
+        <tr><td>Cambiar el fondo</td><td><code>&lt;section class="s02" data-background-color="#0057b8"&gt;</code></td></tr>
+        <tr><td>Poner una imagen</td><td><code>&lt;img src="https://…" alt="Qué se ve"&gt;</code></td></tr>
+      </table>
+      <label class="check"><input type="checkbox" data-step="codigo"> Hecho</label>
+    </section>
+
+    <section class="step" id="fila">
+      <h2><span class="num">2</span> La fila</h2>
+      <figure data-fila="slide_02|slide|4|Qué hacemos"></figure>
+      <p>El número de <b>orden</b> decide en qué posición sale.</p>
+      <label class="check"><input type="checkbox" data-step="fila"> Hecho</label>
+    </section>
+
+    <section class="step" id="publicar">
+      <h2><span class="num">3</span> Publicar</h2>
+      <p><b>Implementar → Gestionar implementaciones → lápiz → Nueva versión → Implementar</b>. La dirección <code>/exec</code> no cambia.</p>
+      <label class="check"><input type="checkbox" data-step="publicar"> Hecho</label>
+    </section>
+
+  </main>
+</div>
+  <footer class="foot">2 GES · Centre San Antonio de Padua · Empresas imaginadas para uso en el aula</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>
