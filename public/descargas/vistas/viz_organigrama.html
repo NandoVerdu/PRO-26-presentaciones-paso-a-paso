@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organigrama · Segona Volta (ejemplo imaginado)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;700&display=swap">
+<style>
+  /* Colores de la empresa: los mismos que en estilo.md */
+  :root { --tinta: #17212b; --azul: #0057b8; --senal: #ffc400; --gris: #e6ebf0; --blanco: #fff; }
+
+  html { font-size: min(1.25vw, 2.2222vh); }
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 400 1.4rem/1.35 'Barlow Semi Condensed', 'Arial Narrow', sans-serif; color: var(--tinta);
+         background: var(--blanco); height: 100vh; overflow: hidden; display: grid; place-items: center; }
+  .ficha { width: 80rem; height: 45rem; display: grid; grid-template-columns: 24rem 1fr; }
+
+  /* ---------- Columna fija: el puesto elegido ---------- */
+  .placa { background: var(--azul); color: var(--blanco); padding: 2.4rem 2rem 2rem; display: flex; flex-direction: column; }
+  .placa h1 { font-size: 1.6rem; font-weight: 500; }
+  .placa h2 { font-size: 3.2rem; line-height: 1; margin-top: 1.4rem; font-weight: 700; }
+  .placa p { margin-top: .7rem; }
+  .placa ul { margin: 1.4rem 0 0; padding: 0; list-style: none; font-size: 1.6rem; }
+  .placa li { padding: .7rem 0; border-top: .12rem solid var(--blanco); animation: entra .4s backwards; }
+  .placa .nota { font-size: 1rem; margin-top: auto; }
+  @keyframes entra { from { opacity: 0; transform: translateX(-2rem); } }
+
+  /* ---------- Organigrama ---------- */
+  .mapa { position: relative; width: 56rem; height: 45rem; }
+  .mapa svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mapa path { fill: none; stroke: var(--tinta); stroke-width: 3; }
+  .mapa path.camino { stroke: var(--senal); stroke-width: 9; stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset .7s; }
+  .mapa path.camino.visto { stroke-dashoffset: 0; }
+  .mapa button {
+    position: absolute; width: 15rem; height: 5.6rem; transform: translate(-50%, -50%); cursor: pointer;
+    font: inherit; font-size: 1.6rem; line-height: 1.1; font-weight: 500; color: inherit; background: var(--blanco);
+    border: .2rem solid var(--tinta); transition: background .3s;
+  }
+  .mapa button:hover { background: var(--gris); }
+  .mapa button[aria-pressed="true"] { background: var(--senal); font-weight: 700; }
+  .mapa button:focus-visible { outline: .25rem solid var(--azul); outline-offset: .2rem; }
+  .ayuda { position: absolute; left: 2.6rem; top: 2rem; font-size: 1.5rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01s !important; animation-delay: 0s !important; transition-duration: .01s !important; }
+  }
+</style>
+</head>
+<body>
+<main class="ficha">
+  <section class="placa" aria-live="polite">
+    <h1 id="empresa"></h1>
+    <h2 id="puesto"></h2>
+    <p id="jefe"></p>
+    <ul id="funciones"></ul>
+    <p class="nota">Ejemplo imaginado. Los datos no son de una empresa real.</p>
+  </section>
+  <div class="mapa" id="mapa">
+    <svg viewBox="0 0 560 450" aria-hidden="true"><g id="lineas"></g><path class="camino" id="camino" pathLength="100" d=""/></svg>
+    <p class="ayuda">Pulsa un puesto para ver qué hace.</p>
+  </div>
+</main>
+
+<script>
+  /* ----- Datos: lo que cambia de una empresa a otra ----- */
+  var EMPRESA = 'Organigrama de Segona Volta';
+  /* x, y: centro de la caja, de 0 a 560 y de 0 a 450.  depende: posición en la lista del puesto superior */
+  var PUESTOS = [
+    { nombre: 'Dirección', x: 280, y: 110, depende: null, funciones: ['Decide precios y horarios', 'Habla con el banco y la asesoría', 'Reparte el trabajo de la semana'] },
+    { nombre: 'Administración', x: 100, y: 230, depende: 0, funciones: ['Hace los presupuestos y las facturas', 'Registra los cobros y los pagos', 'Archiva los documentos'] },
+    { nombre: 'Atención al cliente', x: 280, y: 230, depende: 0, funciones: ['Contesta los mensajes', 'Da cita', 'Avisa cuando la bici está lista'] },
+    { nombre: 'Responsable de taller', x: 460, y: 230, depende: 0, funciones: ['Revisa cada bici al entrar', 'Pide los recambios', 'Prueba la bici antes de entregarla'] },
+    { nombre: 'Mecánica', x: 460, y: 345, depende: 3, funciones: ['Arregla pinchazos, frenos y cambios', 'Apunta los recambios que usa', 'Ordena la herramienta'] }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  $('empresa').textContent = EMPRESA;
+
+  /* Línea quebrada del puesto superior al inferior */
+  function tramo(i) {
+    var h = PUESTOS[i], p = PUESTOS[h.depende], m = (p.y + h.y) / 2;
+    return ' V' + m + ' H' + h.x + ' V' + h.y;
+  }
+
+  var botones = PUESTOS.map(function (p, i) {
+    if (p.depende !== null) {
+      var l = document.createElementNS(NS, 'path');
+      l.setAttribute('d', 'M' + PUESTOS[p.depende].x + ' ' + PUESTOS[p.depende].y + tramo(i));
+      $('lineas').append(l);
+    }
+    var b = document.createElement('button');
+    b.textContent = p.nombre;
+    b.style.left = p.x / 10 + 'rem';
+    b.style.top = p.y / 10 + 'rem';
+    b.addEventListener('click', function () { elegir(i); });
+    $('mapa').append(b);
+    return b;
+  });
+
+  /* Al pulsar un puesto: se ilumina el camino desde Dirección y salen sus funciones */
+  function elegir(i) {
+    var p = PUESTOS[i], cadena = [];
+    for (var k = i; PUESTOS[k].depende !== null; k = PUESTOS[k].depende) cadena.unshift(k);
+    var d = 'M' + PUESTOS[0].x + ' ' + PUESTOS[0].y + cadena.map(tramo).join('');
+    var c = $('camino');
+    c.style.transition = 'none';
+    c.classList.remove('visto');
+    c.setAttribute('d', d);
+    void c.getBoundingClientRect();
+    c.style.transition = '';
+    c.classList.toggle('visto', cadena.length > 0);
+
+    botones.forEach(function (b, n) { b.setAttribute('aria-pressed', String(n === i)); });
+    $('puesto').textContent = p.nombre;
+    $('jefe').textContent = p.depende === null ? 'No depende de ningún otro puesto.' : 'Depende de: ' + PUESTOS[p.depende].nombre + '.';
+    $('funciones').replaceChildren.apply($('funciones'), p.funciones.map(function (f, n) {
+      var li = document.createElement('li');
+      li.textContent = f;
+      li.style.animationDelay = n * 0.12 + 's';
+      return li;
+    }));
+  }
+  elegir(0);
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@ Ejemplo imaginado: Segona Volta.
 
 - Nombre: Segona Volta
 - A qué se dedica, en una frase: arregla bicis del alumnado mientras está en clase
-- Objeto o gesto del oficio que se puede dibujar: una rueda de bici con seis radios
+- Objeto o gesto del oficio que se puede dibujar: una rueda de bici
 
 ## Colores
 
@@ -30,16 +30,15 @@ Solo estos. Cada uno tiene una función.
 ## Composición
 
 - Tamaño: 1280 x 720, sin barras de desplazamiento
-- El nombre de la empresa, siempre visible y en el mismo sitio: columna azul a la izquierda, 350 px
+- El nombre de la empresa, siempre visible y en el mismo sitio: columna azul a la izquierda, 380 px
 - Texto alineado a la izquierda
 - Esquina inferior derecha libre (130 x 90 px): ahí van las flechas de reveal.js
-- Los apartados, en una fila de botones arriba
+- A la derecha, lo que se puede pulsar
 
 ## Animación
 
-- Qué se mueve: la rueda gira un radio cada vez que cambias de apartado
+- Qué se mueve: en la ficha, la rueda gira hasta el dato que pulsas; en el organigrama, la línea se pinta desde Dirección
 - Duración: entre 0,3 y 0,9 segundos
-- Las cifras y las barras pueden crecer hasta su valor
 - Nada se mueve sin parar
 
 ## Interacción

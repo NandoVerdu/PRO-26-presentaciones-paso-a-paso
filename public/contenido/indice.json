@@ -46,6 +46,7 @@
       "color": "naranja",
       "paginas": [
         { "id": "ficha", "titulo": "Ficha de empresa", "archivo": "actividades/ficha.html", "fechas": "del 23 al 30 de noviembre de 2026", "formato": "vista", "pagina": "viz_ficha_empresa" },
+        { "id": "organigrama", "titulo": "Organigrama", "archivo": "actividades/organigrama.html", "fechas": "del 23 al 30 de noviembre de 2026", "formato": "vista", "pagina": "viz_organigrama" },
         { "id": "canvas", "titulo": "Canvas de tres capas", "estado": "pendiente", "fechas": "del 23 al 30 de noviembre de 2026", "formato": "vista", "pagina": "viz_canvas", "resumen": "Las capas económica, ambiental y social del modelo de tu microempresa." },
         { "id": "proceso", "titulo": "Un proceso que funciona", "estado": "pendiente", "fechas": "del 1 al 15 de diciembre de 2026", "formato": "vista", "pagina": "viz_proceso", "resumen": "El proceso administrativo central: diagrama, pasos, documentos, plan de tareas, riesgos y alternativas." },
         { "id": "viabilidad", "titulo": "Decidimos con datos", "estado": "pendiente", "fechas": "del 21 de diciembre de 2026 al 12 de abril de 2027, sin entregas durante la FE", "formato": "vista", "pagina": "viz_viabilidad", "resumen": "Inversión, costes, punto muerto, tesorería y dos análisis más. Termina en una decisión justificada." },

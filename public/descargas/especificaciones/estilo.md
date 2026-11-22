@@ -38,9 +38,8 @@ Solo estos. Cada uno tiene una función.
 
 ## Animación
 
-- Qué se mueve: [el objeto del oficio] cuando cambias de apartado
+- Qué se mueve: [el objeto del oficio] cuando pulsas algo
 - Duración: entre 0,3 y 0,9 segundos
-- Las cifras y las barras pueden crecer hasta su valor
 - Nada se mueve sin parar
 
 ## Interacción

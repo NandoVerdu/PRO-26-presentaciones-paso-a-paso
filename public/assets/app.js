@@ -299,9 +299,9 @@
   function ponerSimulador(n) {
     var filas = [
       { archivo: 'slide_01', tipo: 'slide', activo: true, orden: 1, texto: 'Portada' },
-      { archivo: 'slide_02', tipo: 'slide', activo: true, orden: 2, texto: 'El problema' },
+      { archivo: 'slide_02', tipo: 'slide', activo: true, orden: 2, texto: 'Qué hacemos' },
       { archivo: 'viz_ficha_empresa', tipo: 'vista', activo: true, orden: 3, texto: 'Ficha de empresa' },
-      { archivo: 'slide_03', tipo: 'slide', activo: false, orden: 4, texto: 'Qué cobramos' }
+      { archivo: 'viz_organigrama', tipo: 'vista', activo: false, orden: 4, texto: 'Organigrama' }
     ];
     var tb = el('tbody'), tirillas = el('div', { 'class': 'tirillas', 'aria-live': 'polite' });
     filas.forEach(function (f) {

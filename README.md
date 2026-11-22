@@ -15,6 +15,7 @@ Es una web estática: no tiene base de datos, inicio de sesión ni paso de compi
 | `public/descargas/vistas` | Vistas de ejemplo |
 | `public/descargas/especificaciones` | Archivos de estilo, de contenido y textos para la IA |
 | `public/assets` | Aspecto y funcionamiento de la guía |
+| `reserva/` | Ficha completa (cliente, oferta, proceso, números y ODS) para actividades posteriores. No se publica en la web |
 | `plantilla-actividad.html` | Página en blanco para una actividad nueva |
 | `ver-en-local.bat` | Abre la guía en este ordenador |
 | `publicar.bat` | Sube los cambios a GitHub |

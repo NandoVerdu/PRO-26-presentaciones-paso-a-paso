@@ -1,0 +1,63 @@
+<h1>Organigrama</h1>
+<p class="entrada">Segunda vista: quién trabaja en tu empresa, de quién depende cada puesto y qué funciones hace. Al pulsar un puesto, salen las suyas.</p>
+
+<div class="tabla">
+<table>
+  <tbody>
+    <tr><th scope="row">Trabajo</th><td>Individual</td></tr>
+    <tr><th scope="row">Fechas</th><td>Las del portal. Se hace después de la <a href="#/actividades/ficha">ficha de empresa</a></td></tr>
+    <tr><th scope="row">En tu portfolio será</th><td>Una vista, <code>viz_organigrama</code></td></tr>
+    <tr><th scope="row">Preparas</th><td><code>contenido-organigrama.md</code>. El estilo ya lo tienes</td></tr>
+    <tr><th scope="row">Entregas</th><td>La dirección <code>/exec</code>, con la ficha y el organigrama</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>El resultado</h2>
+<p>Pulsa cada puesto y mira qué camino se ilumina.</p>
+<div data-demo="descargas/vistas/viz_organigrama.html" data-titulo="Organigrama de ejemplo"></div>
+
+<h2>Paso a paso</h2>
+<ol class="pasos">
+  <li><strong>Haz la lista de puestos.</strong> Entre tres y seis. Empieza por Dirección. El total de personas es el mismo que pusiste en la ficha.</li>
+  <li><strong>Decide de quién depende cada uno.</strong> Solo Dirección no depende de nadie.</li>
+  <li><strong>Escribe tres funciones por puesto.</strong> Empieza cada una por un verbo: hace, contesta, revisa, cobra.</li>
+  <li><strong>Dibújalo en un papel.</strong> Cajas y líneas. Si una caja no tiene línea, falta decir de quién depende.</li>
+  <li><strong>Pásalo al archivo de contenido.</strong>
+    <div data-codigo="descargas/especificaciones/contenido-organigrama.md"></div>
+  </li>
+  <li><strong>Genera la vista.</strong> Adjunta este archivo y el mismo <code>estilo.md</code> de la ficha, con el texto de <a href="#/vistas/anadir">Generar y añadir una vista</a>.</li>
+  <li><strong>Pruébala</strong> en el <a href="#/taller/probador">probador</a> y compárala con tu dibujo.</li>
+  <li><strong>Ponla en tu portfolio.</strong> Archivo <code>viz_organigrama</code> en Apps Script y esta fila en la hoja:
+    <div class="tabla">
+    <table data-fila>
+      <thead><tr><th>archivo</th><th>tipo</th><th>activo</th><th>orden</th><th>descripción</th></tr></thead>
+      <tbody><tr><td>viz_organigrama</td><td>vista</td><td data-valor="TRUE">☑</td><td>3</td><td>Organigrama</td></tr></tbody>
+    </table>
+    </div>
+  </li>
+  <li><strong>Publica</strong> una <a href="#/montar/actualizar">versión nueva</a> y entrega en el portal la dirección <code>/exec</code>.</li>
+</ol>
+
+<h2>Cómo mejorar una función</h2>
+<div class="cambio">
+  <div class="antes"><b>Antes</b><p>Administración: se encarga de todo el papeleo.</p></div>
+  <div class="despues"><b>Después</b><p>Administración: <mark>hace</mark> las facturas, <mark>registra</mark> los cobros y <mark>archiva</mark> los documentos.</p></div>
+</div>
+<div class="cambio">
+  <div class="antes"><b>Antes</b><p>Atención al cliente: da un buen trato.</p></div>
+  <div class="despues"><b>Después</b><p>Atención al cliente: <mark>contesta</mark> los mensajes, <mark>da</mark> cita y <mark>avisa</mark> cuando la bici está lista.</p></div>
+</div>
+
+<section class="comprobar">
+  <h2>Antes de entregar</h2>
+  <ul>
+    <li>Todas las cajas se pueden pulsar y enseñan tres funciones.</li>
+    <li>Todos los puestos, menos Dirección, tienen una línea hacia arriba.</li>
+    <li>Las personas suman lo mismo que en la ficha.</li>
+    <li>Cada función empieza por un verbo y no se repite en dos puestos.</li>
+    <li>La ficha y el organigrama tienen los mismos colores y la misma letra.</li>
+    <li>Solo hay puestos, sin nombres de personas reales.</li>
+    <li>La dirección entregada termina en <code>/exec</code> y se abre en otro ordenador.</li>
+  </ul>
+</section>

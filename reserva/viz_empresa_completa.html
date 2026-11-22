@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha de empresa · Segona Volta (ejemplo imaginado)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;700&display=swap">
+<style>
+  /* Colores de la empresa: los mismos que en estilo.md */
+  :root { --tinta: #17212b; --azul: #0057b8; --senal: #ffc400; --gris: #e6ebf0; --medio: #52606d; --blanco: #fff; }
+
+  /* 1rem = 16px cuando la vista mide 1280x720; crece y mengua con el marco */
+  html { font-size: min(1.25vw, 2.2222vh); }
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 400 1.3rem/1.35 'Barlow Semi Condensed', 'Arial Narrow', sans-serif; color: var(--tinta);
+         background: var(--blanco); height: 100vh; overflow: hidden; display: grid; place-items: center; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: 0; text-align: left; }
+  :focus-visible { outline: .25rem solid var(--senal); outline-offset: .15rem; }
+
+  .ficha { width: 80rem; height: 45rem; display: grid; grid-template-columns: 22rem 1fr; }
+
+  /* ---------- Columna fija: quién es la empresa ---------- */
+  .placa { background: var(--azul); color: var(--blanco); padding: 2rem; display: flex; flex-direction: column; }
+  .placa h1 { font-size: 3.6rem; line-height: .95; font-weight: 700; }
+  .placa p { margin-top: .8rem; }
+  .placa dl { margin-top: 1.2rem; font-size: 1.15rem; }
+  .placa dt { font-weight: 700; }
+  .placa dd { margin: 0 0 .4rem; }
+  .placa .nota { font-size: 1rem; margin-top: auto; }
+  .rueda { width: 15rem; align-self: center; margin-top: 1rem; overflow: visible; }
+  .rueda g { transform-origin: 0 0; transition: transform .9s cubic-bezier(.3, 1.4, .5, 1); }
+  .rueda line, .rueda circle { fill: none; stroke: var(--blanco); stroke-width: 2; }
+  .rueda .cubierta { stroke-width: 9; }
+  .rueda .valvula { stroke: var(--senal); stroke-width: 6; }
+
+  /* ---------- Zona de contenido ---------- */
+  .zona { display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+  nav { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: .25rem solid var(--tinta); }
+  nav button { padding: 1rem .5rem; text-align: center; font-weight: 500; font-size: 1.4rem; transition: background .2s; }
+  nav button:hover { background: var(--gris); }
+  nav button[aria-pressed="true"] { background: var(--senal); font-weight: 700; }
+  .panel { padding: 2.4rem 2.6rem; display: none; font-size: 1.6rem; }
+  .panel.activo { display: block; animation: entra .45s ease-out; }
+  @keyframes entra { from { opacity: 0; transform: translateX(2rem); } }
+  h2 { font-size: 2.7rem; text-wrap: balance; line-height: 1.05; margin-bottom: 1.2rem; max-width: 22em; }
+  .etiqueta { font-weight: 700; }
+  .marca { background: var(--senal); padding: 0 .2em; }
+
+  /* Cliente */
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .referentes { border-top: .15rem solid var(--tinta); padding-top: 1rem; margin-top: 1.5rem; }
+  .conmuta { display: flex; gap: .6rem; margin: .6rem 0; }
+  .conmuta button { border: .15rem solid var(--tinta); padding: .35rem .9rem; }
+  .conmuta button[aria-pressed="true"] { background: var(--tinta); color: var(--blanco); }
+
+  /* Oferta */
+  .servicio { display: grid; grid-template-columns: 1fr auto; width: 100%; padding: .9rem 0; border-bottom: .12rem solid var(--tinta); }
+  .servicio strong { font-size: 1.9rem; }
+  .servicio .precio { font-size: 1.9rem; font-weight: 700; }
+  .servicio .detalle { grid-column: 1 / -1; display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s; }
+  .servicio .detalle span { overflow: hidden; }
+  .servicio[aria-expanded="true"] .detalle { grid-template-rows: 1fr; }
+  .servicio[aria-expanded="true"] .precio { background: var(--senal); padding: 0 .3em; }
+
+  /* Organización */
+  .mapa { width: 100%; height: 15.5rem; }
+  .mapa path { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+  .panel.activo .mapa path { animation: traza .9s .2s forwards; }
+  @keyframes traza { to { stroke-dashoffset: 0; } }
+  .mapa rect { fill: var(--blanco); stroke: var(--tinta); stroke-width: 3; transition: fill .2s; }
+  .mapa g[role="button"] { cursor: pointer; }
+  .mapa g[role="button"]:hover rect { fill: var(--gris); }
+  .mapa g[aria-pressed="true"] rect { fill: var(--senal); }
+  .mapa text { font-size: 22px; text-anchor: middle; font-weight: 500; fill: var(--tinta); }
+  .explica { min-height: 7.5rem; border-top: .15rem solid var(--tinta); padding-top: .9rem; }
+
+  /* Proceso */
+  .via { width: 100%; height: 12rem; overflow: visible; }
+  .via .linea { stroke: var(--gris); stroke-width: 10; }
+  .via .hecho { stroke: var(--azul); stroke-width: 10; stroke-dasharray: 800; stroke-dashoffset: 800; transition: stroke-dashoffset .6s; }
+  .via circle { fill: var(--blanco); stroke: var(--azul); stroke-width: 6; transition: fill .3s .3s; }
+  .via circle.pasado { fill: var(--azul); }
+  .via circle.actual { fill: var(--senal); }
+  .via text { font-size: 22px; text-anchor: middle; font-weight: 500; }
+  .avanza { border: .15rem solid var(--tinta); background: var(--senal); padding: .5rem 1.2rem; font-weight: 700; margin-top: 1rem; }
+
+  /* Números */
+  .mando { display: grid; grid-template-columns: 11rem 1fr 6rem; align-items: center; gap: 1rem; margin-bottom: .6rem; }
+  .mando output { font-weight: 700; font-size: 1.8rem; text-align: right; }
+  input[type="range"] { width: 100%; accent-color: var(--azul); height: 1.6rem; }
+  .barras { margin-top: 1.2rem; display: grid; gap: .6rem; }
+  .barra { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; align-items: center; }
+  .barra .carril { background: var(--gris); height: 2.6rem; position: relative; }
+  .barra .lleno { height: 100%; background: var(--azul); width: 0; transition: width .35s; }
+  .barra .lleno.coste { background: var(--medio); }
+  .barra b { position: absolute; right: .6rem; top: 50%; transform: translateY(-50%); background: var(--blanco); padding: 0 .4rem; }
+  .veredicto { margin-top: 1.2rem; font-size: 1.8rem; }
+  .fuente { font-size: 1.3rem; margin-top: .6rem; max-width: 38em; }
+  .veredicto .pierde { background: var(--tinta); color: var(--blanco); padding: 0 .25em; }
+
+  /* ODS */
+  .ods { display: grid; grid-template-columns: 9rem 1fr; gap: 1.6rem; align-items: center; padding: 1rem 0; border-bottom: .12rem solid var(--tinta); }
+  .ods .cifra { font-size: 4rem; line-height: 1; font-weight: 700; color: var(--azul); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01s !important; animation-delay: 0s !important; transition-duration: .01s !important; transition-delay: 0s !important; }
+  }
+</style>
+</head>
+<body>
+<main class="ficha">
+
+  <header class="placa">
+    <h1>Segona Volta</h1>
+    <p>Arreglamos tu bici mientras estás en clase.</p>
+    <dl>
+      <dt>Titular</dt><dd>Autónoma, una persona</dd>
+      <dt>Dónde</dt><dd>Local de 30 m² junto al instituto</dd>
+      <dt>Actividad</dt><dd>Reparación de bicicletas</dd>
+    </dl>
+    <svg class="rueda" viewBox="-60 -60 120 120" aria-hidden="true">
+      <g id="rueda">
+        <circle class="cubierta" r="52"/><circle r="7"/>
+        <line y1="-7" y2="-47"/><line y1="-7" y2="-47" transform="rotate(60)"/><line y1="-7" y2="-47" transform="rotate(120)"/>
+        <line y1="-7" y2="-47" transform="rotate(180)"/><line y1="-7" y2="-47" transform="rotate(240)"/><line y1="-7" y2="-47" transform="rotate(300)"/>
+        <line class="valvula" y1="-46" y2="-34" transform="rotate(30)"/>
+      </g>
+    </svg>
+    <p class="nota">Ejemplo imaginado. Los datos no son de una empresa real.</p>
+  </header>
+
+  <div class="zona">
+    <nav aria-label="Apartados de la ficha">
+      <button aria-pressed="true">Cliente</button>
+      <button aria-pressed="false">Oferta</button>
+      <button aria-pressed="false">Organización</button>
+      <button aria-pressed="false">Proceso</button>
+      <button aria-pressed="false">Números</button>
+      <button aria-pressed="false">ODS</button>
+    </nav>
+
+    <div>
+      <section class="panel activo">
+        <h2>Marc sale de entrenar a las 19:00. El taller cierra a las 18:30.</h2>
+        <div class="dos">
+          <p><span class="etiqueta">Cliente.</span> Alumnado de 14 a 20 años y profesorado que va al centro en bici.</p>
+          <p><span class="etiqueta">Necesidad.</span> Dejar la bici arreglada <span class="marca">sin hacer un viaje aparte</span> al taller.</p>
+        </div>
+        <div class="referentes">
+          <p class="etiqueta">Dos referentes del sector</p>
+          <div class="conmuta" id="referentes">
+            <button aria-pressed="true">Taller de barrio</button>
+            <button aria-pressed="false">Tienda de deporte grande</button>
+          </div>
+          <p id="referente"></p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Tres servicios con precio cerrado. Pulsa cada uno.</h2>
+        <div id="servicios">
+          <button class="servicio" aria-expanded="true"><strong>Puesta a punto</strong><span class="precio">28 €</span><span class="detalle"><span>Frenos, cambio y engrase. 50 minutos de trabajo. La dejas a las 8:00 y la recoges a las 14:00.</span></span></button>
+          <button class="servicio" aria-expanded="false"><strong>Pinchazo</strong><span class="precio">12 €</span><span class="detalle"><span>Cámara nueva y montaje. 15 minutos. Si vienes en el recreo, te la llevas al salir.</span></span></button>
+          <button class="servicio" aria-expanded="false"><strong>Recogida en la puerta</strong><span class="precio">3 €</span><span class="detalle"><span>Vamos a por la bici al aparcamiento del centro y la devolvemos al mismo sitio.</span></span></button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Una persona, cuatro departamentos. Pulsa uno.</h2>
+        <svg class="mapa" viewBox="0 0 900 250" role="group" aria-label="Organigrama">
+          <path d="M450 70 V120 M120 160 V120 H780 V160 M340 120 V160 M560 120 V160"/>
+          <rect x="330" y="10" width="240" height="60"/><text x="450" y="48">Dirección</text>
+          <g role="button" tabindex="0" aria-pressed="true"><rect x="20" y="160" width="200" height="64"/><text x="120" y="199">Taller</text></g>
+          <g role="button" tabindex="0" aria-pressed="false"><rect x="240" y="160" width="200" height="64"/><text x="340" y="199">Administración</text></g>
+          <g role="button" tabindex="0" aria-pressed="false"><rect x="460" y="160" width="200" height="64"/><text x="560" y="199">Clientes</text></g>
+          <g role="button" tabindex="0" aria-pressed="false"><rect x="680" y="160" width="200" height="64"/><text x="780" y="199">Compras</text></g>
+        </svg>
+        <div class="explica" id="depto" aria-live="polite"></div>
+      </section>
+
+      <section class="panel">
+        <h2>El proceso central: de la bici rota a la factura</h2>
+        <svg class="via" viewBox="0 0 900 150" aria-hidden="true">
+          <line class="linea" x1="50" y1="50" x2="850" y2="50"/><line class="hecho" id="hecho" x1="50" y1="50" x2="850" y2="50"/>
+          <g id="estaciones"></g>
+        </svg>
+        <div class="explica" id="paso" aria-live="polite"></div>
+        <button class="avanza" id="avanza">Siguiente paso</button>
+      </section>
+
+      <section class="panel">
+        <h2>¿Cuántas reparaciones hacen falta al mes?</h2>
+        <label class="mando"><span>Precio medio</span><input type="range" id="precio" min="10" max="45" value="28"><output id="oPrecio"></output></label>
+        <label class="mando"><span>Reparaciones</span><input type="range" id="volumen" min="0" max="90" value="45"><output id="oVolumen"></output></label>
+        <div class="barras">
+          <div class="barra"><span>Ingresos</span><div class="carril"><div class="lleno" id="bIngresos"></div><b id="vIngresos"></b></div></div>
+          <div class="barra"><span>Costes</span><div class="carril"><div class="lleno coste" id="bCostes"></div><b id="vCostes"></b></div></div>
+        </div>
+        <p class="veredicto" id="veredicto" aria-live="polite"></p>
+        <p class="fuente">Hipótesis: 470 € fijos al mes y 7 € de material por reparación. Volumen por comprobar con una encuesta en el centro.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Dos ODS con una cifra que podemos contar</h2>
+        <div class="ods"><div class="cifra" data-hasta="30">0</div><p><strong>ODS 12, producción y consumo responsables.</strong> Cámaras usadas que guardamos cada mes para llevarlas a reciclar.</p></div>
+        <div class="ods"><div class="cifra" data-hasta="45">0</div><p><strong>ODS 11, ciudades sostenibles.</strong> Bicis que vuelven a circular cada mes en lugar de quedarse en el trastero.</p></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script>
+  /* ----- Datos: lo que cambia de una empresa a otra ----- */
+  var REFERENTES = [
+    'Conoce a sus clientes y explica la avería. Presupuesto en el momento. Horario partido y cierra el sábado por la tarde. Aprendemos: explicar antes de cobrar.',
+    'Precio a la vista y cita por internet. Tarda entre 3 y 5 días y hay que llevar la bici en coche. Aprendemos: precio cerrado y cita por internet.'
+  ];
+  var DEPARTAMENTOS = [
+    ['Taller', 'Repara y prueba la bici.', 'Banco de trabajo, herramienta y recambios. Documento: orden de reparación.'],
+    ['Administración', 'Hace presupuestos y facturas, registra cobros y guarda los documentos.', 'Portátil, Google Sheets y Odoo. Documentos: presupuesto y factura.'],
+    ['Clientes', 'Atiende los mensajes, da cita y avisa cuando la bici está lista.', 'Teléfono de empresa y formulario de cita. Documento: registro de citas.'],
+    ['Compras', 'Pide cámaras, cables y pastillas cuando quedan menos de cinco.', 'Lista de proveedores y hoja de existencias. Documentos: pedido y albarán.']
+  ];
+  var PASOS = [
+    ['Cita', 'El cliente rellena el formulario. Queda una fila en la hoja de citas.'],
+    ['Presupuesto', 'Se revisa la bici y se envía el precio. Si no acepta, se devuelve sin coste.'],
+    ['Reparación', 'Se abre la orden de reparación y se descuentan los recambios.'],
+    ['Factura', 'Se emite con los datos de la orden: no se escribe nada dos veces.'],
+    ['Cobro', 'Bizum o tarjeta. Se marca la factura como cobrada y se archiva.']
+  ];
+  var FIJOS = 470, MATERIAL = 7;
+
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.from(document.querySelectorAll(s)); };
+  var euros = function (n) { return Math.round(n).toLocaleString('es-ES', { useGrouping: 'always' }) + ' €'; };
+  function elegir(lista, i) { lista.forEach(function (b, k) { b.setAttribute('aria-pressed', k === i); }); }
+
+  /* ----- Apartados: la rueda gira un radio por apartado ----- */
+  var pestanas = $$('nav button'), paneles = $$('.panel');
+  pestanas.forEach(function (b, i) {
+    b.addEventListener('click', function () {
+      elegir(pestanas, i);
+      paneles.forEach(function (p, k) { p.classList.toggle('activo', k === i); });
+      $('#rueda').style.transform = 'rotate(' + i * 60 + 'deg)';
+      if (i === 4) calcular();
+      if (i === 5) contar();
+    });
+  });
+
+  /* ----- Cliente ----- */
+  var refs = $$('#referentes button');
+  function referente(i) { elegir(refs, i); $('#referente').textContent = REFERENTES[i]; }
+  refs.forEach(function (b, i) { b.addEventListener('click', function () { referente(i); }); });
+  referente(0);
+
+  /* ----- Oferta ----- */
+  var servicios = $$('.servicio');
+  servicios.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var abierto = b.getAttribute('aria-expanded') === 'true';
+      servicios.forEach(function (s) { s.setAttribute('aria-expanded', 'false'); });
+      b.setAttribute('aria-expanded', String(!abierto));
+    });
+  });
+
+  /* ----- Organización ----- */
+  var cajas = $$('.mapa g[role="button"]');
+  function depto(i) {
+    elegir(cajas, i);
+    $('#depto').innerHTML = '<p><strong></strong> <span></span></p><p></p>';
+    $('#depto strong').textContent = DEPARTAMENTOS[i][0] + '.';
+    $('#depto span').textContent = DEPARTAMENTOS[i][1];
+    $('#depto p:last-child').textContent = DEPARTAMENTOS[i][2];
+  }
+  cajas.forEach(function (g, i) {
+    g.addEventListener('click', function () { depto(i); });
+    g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); depto(i); } });
+  });
+  depto(0);
+
+  /* ----- Proceso ----- */
+  var NS = 'http://www.w3.org/2000/svg', actual = 0;
+  PASOS.forEach(function (p, i) {
+    var x = 50 + i * 200;
+    var c = document.createElementNS(NS, 'circle'), t = document.createElementNS(NS, 'text');
+    c.setAttribute('cx', x); c.setAttribute('cy', 50); c.setAttribute('r', 20);
+    t.setAttribute('x', x); t.setAttribute('y', 112); t.textContent = p[0];
+    $('#estaciones').append(c, t);
+  });
+  function paso() {
+    $$('#estaciones circle').forEach(function (c, i) { c.setAttribute('class', i < actual ? 'pasado' : i === actual ? 'actual' : ''); });
+    $('#hecho').style.strokeDashoffset = 800 - actual * 200;
+    $('#paso').innerHTML = '<p><strong></strong> <span></span></p>';
+    $('#paso strong').textContent = PASOS[actual][0] + '.';
+    $('#paso span').textContent = PASOS[actual][1];
+    $('#avanza').textContent = actual === PASOS.length - 1 ? 'Volver a empezar' : 'Siguiente paso';
+  }
+  $('#avanza').addEventListener('click', function () { actual = (actual + 1) % PASOS.length; paso(); });
+  paso();
+
+  /* ----- Números ----- */
+  function calcular() {
+    var precio = +$('#precio').value, n = +$('#volumen').value;
+    var ingresos = precio * n, costes = FIJOS + MATERIAL * n, tope = 4050;
+    $('#oPrecio').textContent = precio + ' €';
+    $('#oVolumen').textContent = n;
+    $('#bIngresos').style.width = ingresos / tope * 100 + '%';
+    $('#bCostes').style.width = costes / tope * 100 + '%';
+    $('#vIngresos').textContent = euros(ingresos);
+    $('#vCostes').textContent = euros(costes);
+    var resultado = ingresos - costes, minimo = Math.ceil(FIJOS / (precio - MATERIAL));
+    $('#veredicto').innerHTML = resultado >= 0 ? 'Ganamos <span class="marca"></span> al mes. <span></span>' : 'Perdemos <span class="pierde"></span> al mes. <span></span>';
+    $('#veredicto span:first-of-type').textContent = euros(Math.abs(resultado));
+    $('#veredicto span:last-of-type').textContent = 'A este precio hacen falta ' + minimo + ' reparaciones para no perder.';
+  }
+  $('#precio').addEventListener('input', calcular);
+  $('#volumen').addEventListener('input', calcular);
+
+  /* ----- ODS: las cifras suben hasta su valor ----- */
+  var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function contar() {
+    $$('.cifra').forEach(function (c) {
+      var hasta = +c.dataset.hasta, inicio = performance.now();
+      if (quieto) { c.textContent = hasta; return; }
+      (function tic(t) {
+        var k = Math.max(0, Math.min(1, (t - inicio) / 900));
+        c.textContent = Math.round(hasta * k);
+        if (k < 1) requestAnimationFrame(tic);
+      })(inicio);
+    });
+  }
+</script>
+</body>
+</html>
