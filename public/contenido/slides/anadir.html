@@ -1,0 +1,33 @@
+<h1>Añadir un slide</h1>
+<p class="entrada">Este es el recorrido completo. Lo repetirás cada vez que tengas una idea nueva que contar.</p>
+
+<ol class="pasos">
+  <li>Escribe en una frase qué quieres contar. Si necesitas la palabra «y», son dos slides.</li>
+  <li>Escribe el código a mano, con las <a href="#/slides/recetas">recetas</a>, o pídeselo a la IA con este texto. Rellena el final antes de enviarlo:
+    <div data-codigo="descargas/especificaciones/prompt-slide.md" data-nombre="prompt-slide.md"></div>
+  </li>
+  <li>Pega el código en el <a href="#/taller/probador">probador</a> y corrige lo que marque.</li>
+  <li>En Apps Script, <strong>+ → HTML</strong>, con el nombre siguiente libre: <code>slide_02</code>, <code>slide_03</code>… Pega el código y guarda.</li>
+  <li>En la pestaña <code>Slides</code> de la hoja, añade una fila:
+    <div class="tabla">
+    <table data-fila>
+      <thead><tr><th>archivo</th><th>tipo</th><th>activo</th><th>orden</th><th>descripción</th></tr></thead>
+      <tbody><tr><td>slide_02</td><td>slide</td><td data-valor="TRUE">☑</td><td>2</td><td>El problema</td></tr></tbody>
+    </table>
+    </div>
+  </li>
+  <li>En la hoja, <strong>Portfolio → Revisar las páginas</strong>.</li>
+  <li>Míralo en la dirección <code>/dev</code>.</li>
+  <li>Publica una <a href="#/montar/actualizar">versión nueva</a> y recarga <code>/exec</code>.</li>
+</ol>
+
+<p class="ojo">Si el código lo ha escrito la IA, léelo antes de pegarlo. Tienes que poder explicar qué hace cada parte y de dónde sale cada dato.</p>
+
+<section class="comprobar">
+  <h2>Comprueba</h2>
+  <ul>
+    <li>El slide se ve en <code>/exec</code>, en el orden que querías.</li>
+    <li>Desmarcas su casilla, recargas y desaparece. La vuelves a marcar.</li>
+    <li>Los demás slides se ven igual que antes.</li>
+  </ul>
+</section>

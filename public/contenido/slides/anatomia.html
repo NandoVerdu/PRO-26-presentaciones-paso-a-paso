@@ -1,0 +1,32 @@
+<h1>Anatomía de un slide</h1>
+<p class="entrada">Un slide es un <code>&lt;section&gt;</code>. Dentro van su contenido, su estilo y, si hace falta, su programa. Cambia el código y mira el resultado.</p>
+
+<div data-probador="slide" data-fijo data-archivo="descargas/slides/slide_02.html"></div>
+<p>Haz clic en el resultado y usa las flechas del teclado.</p>
+
+<h2>Las tres reglas</h2>
+<h3>Un archivo, un section</h3>
+<p>Si tienes dos ideas, haz dos archivos y dos filas en la hoja. Así puedes esconder una sin tocar la otra.</p>
+
+<h3>Cada slide tiene su clase</h3>
+<p>La clase lleva el mismo número que el archivo: <code>slide_02</code> usa <code>s02</code>. Todas las reglas de estilo empiezan por ella, porque los slides comparten página y lo que no lleva clase afecta a todos.</p>
+<div class="cambio">
+  <div class="antes"><b>Antes</b><p>h2 { color: red; }</p></div>
+  <div class="despues"><b>Después</b><p><mark>.s02</mark> h2 { color: red; }</p></div>
+</div>
+
+<h3>Lo que digas en voz alta no va escrito</h3>
+<p>Para tu guion está <code>&lt;aside class="notes"&gt;</code>. No se ve en la presentación.</p>
+<div class="cambio">
+  <div class="antes"><b>Antes</b><p>Ofrecemos un servicio de calidad, cercano y adaptado a las necesidades de cada cliente.</p></div>
+  <div class="despues"><b>Después</b><p>Dejas la bici a las <mark>8:00</mark>, la recoges a las <mark>14:00</mark> y pagas <mark>28 €</mark>.</p></div>
+</div>
+
+<section class="comprobar">
+  <h2>Comprueba</h2>
+  <ul>
+    <li>Has cambiado los tres puntos del ejemplo por un problema real de tu cliente.</li>
+    <li>Sabes qué pasa si quitas <code>class="fragment"</code>.</li>
+    <li>El probador dice «Sin fallos».</li>
+  </ul>
+</section>

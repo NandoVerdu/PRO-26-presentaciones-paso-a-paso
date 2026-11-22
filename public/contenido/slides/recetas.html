@@ -1,0 +1,71 @@
+<h1>Recetas de reveal.js</h1>
+<p class="entrada">Trozos de código para copiar dentro de tu <code>&lt;section&gt;</code>. Cambia <code>s05</code> por la clase de tu slide.</p>
+
+<h2>Que aparezca por partes</h2>
+<script type="text/plain" data-nombre="fragmentos">
+<p class="fragment">Aparece con la flecha.</p>
+<p class="fragment fade-up">Entra desde abajo.</p>
+<p class="fragment highlight-red">Se vuelve rojo.</p>
+<p class="fragment" data-fragment-index="1">Estos dos</p>
+<p class="fragment" data-fragment-index="1">aparecen a la vez.</p>
+</script>
+
+<h2>Dos columnas</h2>
+<script type="text/plain" data-nombre="columnas">
+<style>
+  .s05 .columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; text-align: left; }
+</style>
+<div class="columnas">
+  <div><h3>Lo que hacen otros</h3><p>Cierran a las 18:30.</p></div>
+  <div><h3>Lo que hacemos</h3><p>Arreglamos en horario de clase.</p></div>
+</div>
+</script>
+
+<h2>Una tabla</h2>
+<div data-codigo="descargas/slides/slide_03.html" data-nombre="slide_03.html"></div>
+
+<h2>Una captura comentada</h2>
+<p>La imagen tiene que estar en una dirección pública que empiece por <code>https</code>. Escribe siempre <code>alt</code>: es lo que lee quien no puede ver la imagen.</p>
+<script type="text/plain" data-nombre="imagen">
+<img src="https://…/factura-odoo.png" alt="Factura emitida en Odoo con los datos de la orden">
+<p class="fragment">El número de orden se copia solo: no lo escribimos dos veces.</p>
+</script>
+
+<h2>Un vídeo o un documento</h2>
+<script type="text/plain" data-nombre="incrustar">
+<iframe width="960" height="540" title="Demostración de la microaplicación"
+  src="https://www.youtube.com/embed/CODIGO_DEL_VIDEO" allowfullscreen></iframe>
+</script>
+
+<h2>Fondo de otro color</h2>
+<script type="text/plain" data-nombre="fondo">
+<section class="s05" data-background-color="#0057b8">
+  …
+</section>
+</script>
+
+<h2>Dos slides que se transforman</h2>
+<p>Pon <code>data-auto-animate</code> en dos slides seguidos y el mismo <code>data-id</code> en el elemento que cambia. Cada slide va en su archivo.</p>
+<script type="text/plain" data-nombre="slide_05 y slide_06">
+<!-- slide_05 -->
+<section class="s05" data-auto-animate>
+  <h2 data-id="cifra">45 reparaciones</h2>
+</section>
+
+<!-- slide_06 -->
+<section class="s06" data-auto-animate>
+  <h2 data-id="cifra">45 reparaciones</h2>
+  <p>475 € de resultado al mes</p>
+</section>
+</script>
+
+<h2>Pruébalo aquí</h2>
+<div data-probador="slide" data-fijo data-archivo="descargas/slides/slide_03.html"></div>
+
+<section class="comprobar">
+  <h2>Comprueba</h2>
+  <ul>
+    <li>Has hecho un slide con una tabla y las filas aparecen una a una.</li>
+    <li>Todas tus reglas de estilo empiezan por la clase del slide.</li>
+  </ul>
+</section>

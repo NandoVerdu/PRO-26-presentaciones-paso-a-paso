@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <title><?= cfg.titulo ?></title>
+
+  <!-- reveal.js con la versión fijada, para que no cambie sola -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/<?= cfg.tema ?>.css">
+
+  <style>
+    /* Estilos comunes. Lo propio de cada slide va en su archivo, con su clase (.s01, .s02…) */
+    .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+    .reveal section img { max-height: 60vh; }
+    .reveal .slides > section.vista { padding: 0; }
+    .reveal section.vista iframe {
+      display: block; width: 1280px; height: 720px; max-width: none; max-height: none;
+      margin: 0; border: 0; background: #fff;
+    }
+    .reveal section.aviso { border: 6px dashed #c8102e; padding: 1em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <? paginas.forEach(function (html) { ?>
+        <?!= html ?>
+      <? }); ?>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    /* Una vista se carga al llegar a ella y se descarga al salir: su animación empieza siempre de cero */
+    function montar(pagina) {
+      var marco = pagina && pagina.querySelector('iframe[data-html]');
+      if (marco) marco.srcdoc = marco.getAttribute('data-html');
+    }
+    function desmontar(pagina) {
+      var marco = pagina && pagina.querySelector('iframe[data-html]');
+      if (marco) {
+        marco.removeAttribute('srcdoc');
+        marco.blur();       /* devuelve el teclado a la presentación */
+        window.focus();
+      }
+    }
+
+    Reveal.on('ready', function (e) { montar(e.currentSlide); });
+    Reveal.on('slidechanged', function (e) { desmontar(e.previousSlide); montar(e.currentSlide); });
+
+    /* Las flechas siguen funcionando aunque hayas hecho clic dentro de una vista */
+    window.addEventListener('message', function (e) {
+      var tecla = e.data && e.data.portfolio;
+      if (tecla === 'ArrowRight' || tecla === 'PageDown') Reveal.next();
+      if (tecla === 'ArrowLeft' || tecla === 'PageUp') Reveal.prev();
+    });
+
+    Reveal.initialize(<?!= revealJson ?>);
+  </script>
+</body>
+</html>

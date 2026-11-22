@@ -1,0 +1,37 @@
+<h1>La plantilla y el primer slide</h1>
+<p class="entrada">Faltan dos archivos: <code>index</code>, que carga reveal.js, y <code>slide_01</code>, tu portada.</p>
+
+<ol class="pasos">
+  <li>En Apps Script, al lado de «Archivos», pulsa <strong>+ → HTML</strong>. Escribe <code>index</code>, sin <code>.html</code>: la extensión la pone Google.</li>
+  <li>Borra lo que trae y pega esto:
+    <div data-codigo="descargas/apps-script/plantilla-index.html" data-nombre="index.html"></div>
+  </li>
+  <li>Crea otro archivo HTML. Llámalo <code>slide_01</code> y pega la portada:
+    <div data-codigo="descargas/slides/slide_01.html" data-nombre="slide_01.html"></div>
+  </li>
+  <li>Guarda los dos con <kbd>Ctrl</kbd> + <kbd>S</kbd>.</li>
+  <li>En la hoja, abre <strong>Portfolio → Revisar las páginas</strong>. Tiene que decir <code>slide_01: correcto</code>.</li>
+</ol>
+
+<h2>Qué significan los signos raros de index</h2>
+<p>Son instrucciones para Apps Script. Se ejecutan antes de enviar la página, así que quien la visita no las ve.</p>
+<div class="tabla">
+<table>
+  <thead><tr><th>Signo</th><th>Qué hace</th><th>Dónde está</th></tr></thead>
+  <tbody>
+    <tr><td><code>&lt;?= … ?&gt;</code></td><td>Escribe un texto</td><td>El título de la web</td></tr>
+    <tr><td><code>&lt;?!= … ?&gt;</code></td><td>Escribe código HTML tal cual</td><td>Cada una de tus páginas</td></tr>
+    <tr><td><code>&lt;? … ?&gt;</code></td><td>Hace algo sin escribir nada</td><td>El bucle que recorre las páginas</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Gracias a ese bucle no tienes que volver a abrir <code>index</code>. Para añadir una página basta con un archivo nuevo y una fila en la hoja.</p>
+<p>Las llaves dobles, <code>{{titulo}}</code> y <code>{{autores}}</code>, son otra cosa: se cambian por lo que hayas escrito en <code>Config</code>.</p>
+
+<section class="comprobar">
+  <h2>Comprueba</h2>
+  <ul>
+    <li>En Apps Script ves tres archivos: el <code>.gs</code>, <code>index.html</code> y <code>slide_01.html</code>.</li>
+    <li>«Revisar las páginas» dice que <code>slide_01</code> es correcto.</li>
+  </ul>
+</section>

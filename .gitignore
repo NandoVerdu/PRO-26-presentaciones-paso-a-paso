@@ -1,0 +1,5 @@
+# Documento del profesor: enlaza a la hoja de trabajo y el repositorio es publico
+PI_*.md
+node_modules/
+.vercel/
+.env*
