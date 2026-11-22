@@ -193,3 +193,8 @@ figure.code pre { max-height: 340px; overflow: auto; }
 :focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 .card .tag { align-self: flex-start; }
 .cards { max-width: 800px; }
+
+/* Volver al inicio */
+.inicio { margin-left: auto; color: #fff; font-weight: 700; text-decoration: none; border: 2px solid rgba(255, 255, 255, .7); border-radius: 10px; padding: 6px 14px; white-space: nowrap; }
+.inicio:hover { background: #fff; color: var(--violeta); }
+@media print { .inicio, nav.cta { display: none; } }
